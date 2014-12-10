@@ -1,0 +1,41 @@
+extends layout
+
+block title
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+block content
+  h1(style="text-align: center;") EC2 Deployments
+  div.container
+    div.content
+      table.table.table-hover.table-bordered
+        thread
+          tr
+            th deployment_id
+            th partner_id
+            th key_pair_name
+            th subnet_id
+            th security_group_id
+            th private_key_location
+            th owner_name
+            th vpc_id
+            th internet_gateway_id
+            th deployment_status   
+        tbody
+          - each result in rows
+              tr(class='clickableRow',href='http://www.google.com')
+                td.col-md-1 #{result.deployment_id}
+                td.col-md-1 #{result.partner_id}
+                td.col-md-1 #{result.key_pair_name}
+                td.col-md-1 #{result.subnet_id}
+                td.col-md-1 #{result.security_group_id}
+                td.col-md-1 #{result.private_key_location}
+                td.col-md-1 #{result.owner-name}
+                td.col-md-1 #{result.vpc_id}
+                td.col-md-1 #{result.internet_gateway_id}
+                td.col-md-1 #{result.deployment_status}
+  script.
+    jQuery(document).ready(function($) {
+      $(".clickableRow").click(function() {
+        window.document.location = $(this).attr("href");
+      });
+    });
